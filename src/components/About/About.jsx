@@ -1,41 +1,89 @@
 import "./About.css";
 import { motion } from "framer-motion";
+import {
+  FaUserShield,
+  FaLaptopCode,
+  FaGraduationCap,
+  FaBullseye,
+} from "react-icons/fa";
+
+import profileImage from "../../assets/images/profile.jpg";
+
 function About() {
   return (
-    <motion.section id="about" className="about" data-aos="fade-right">
-      <h2>About Me</h2>
+    <section className="about" id="about">
+      <motion.div
+        className="about-container"
+        initial={{ opacity: 0, y: 80 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
+        {/* Left Side - Image */}
 
-      <p>
-        I'm <strong>Bello Abdulrahman Adebolaji</strong>, a Computer Science student
-        specializing in Cybersecurity at Al-Hikmah University. I have practical experience in network monitoring and IT support through my SIWES internship at the University of Ilorin Network Operating Centre. I am passionate about network security, ethical hacking, penetration testing, and secure software development, and I enjoy building projects that strengthen my technical skills.
-
-        I am passionate about ethical hacking, penetration testing,
-        network security, web application security, Linux administration,
-        and digital forensics.
-
-        My goal is to become a Security Engineer who builds secure systems
-        and protects organizations against cyber threats.
-      </p>
-
-      <div className="about-cards">
-
-        <div className="card">
-          <h3>🎓 Education</h3>
-          <p>Computer Science (Cybersecurity)</p>
+        <div className="about-image">
+          <img src={profileImage} alt="Abdulrahman Bello" />
         </div>
 
-        <div className="card">
-          <h3>🛡 Focus</h3>
-          <p>Ethical Hacking & Penetration Testing</p>
-        </div>
+        {/* Right Side */}
 
-        <div className="card">
-          <h3>🌍 Goal</h3>
-          <p>Become a Cybersecurity Engineer</p>
-        </div>
+        <div className="about-content">
+          <h2 className="section-title">About Me</h2>
 
-      </div>
-    </motion.section>
+          <p className="section-subtitle">
+            I'm <strong>Abdulrahman Bello</strong>, a Computer Science student
+            specializing in Cybersecurity.
+          </p>
+
+          <p>
+            I am passionate about cybersecurity, ethical hacking, web
+            development, and network security. I enjoy building secure
+            applications with React while continuously improving my skills
+            through hands-on projects and certifications.
+          </p>
+
+          <div className="about-grid">
+
+            <motion.div
+              className="about-card"
+              whileHover={{ scale: 1.05 }}
+            >
+              <FaUserShield className="about-icon" />
+              <h3>Cybersecurity</h3>
+              <p>Ethical Hacking, Network Security & Digital Defense.</p>
+            </motion.div>
+
+            <motion.div
+              className="about-card"
+              whileHover={{ scale: 1.05 }}
+            >
+              <FaLaptopCode className="about-icon" />
+              <h3>Web Development</h3>
+              <p>React, JavaScript, HTML, CSS and modern UI development.</p>
+            </motion.div>
+
+            <motion.div
+              className="about-card"
+              whileHover={{ scale: 1.05 }}
+            >
+              <FaGraduationCap className="about-icon" />
+              <h3>Learning</h3>
+              <p>Always improving through certifications and practical projects.</p>
+            </motion.div>
+
+            <motion.div
+              className="about-card"
+              whileHover={{ scale: 1.05 }}
+            >
+              <FaBullseye className="about-icon" />
+              <h3>Career Goal</h3>
+              <p>To become a professional Cybersecurity Engineer.</p>
+            </motion.div>
+
+          </div>
+        </div>
+      </motion.div>
+    </section>
   );
 }
 

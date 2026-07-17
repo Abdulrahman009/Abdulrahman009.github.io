@@ -1,47 +1,36 @@
 import "./ScrollTop.css";
+import { FaArrowUp } from "react-icons/fa";
 import { useEffect, useState } from "react";
 
-function ScrollTop(){
+function ScrollTop() {
+  const [visible, setVisible] = useState(false);
 
-    const [visible,setVisible]=useState(false);
+  useEffect(() => {
+    const toggleVisibility = () => {
+      setVisible(window.scrollY > 300);
+    };
 
-    useEffect(()=>{
+    window.addEventListener("scroll", toggleVisibility);
 
-        const toggle=()=>{
+    return () => {
+      window.removeEventListener("scroll", toggleVisibility);
+    };
+  }, []);
 
-            if(window.scrollY>400){
-                setVisible(true);
-            }else{
-                setVisible(false);
-            }
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
-        }
-
-        window.addEventListener("scroll",toggle);
-
-        return ()=>window.removeEventListener("scroll",toggle);
-
-    },[]);
-
-    const top=()=>{
-
-        window.scrollTo({
-            top:0,
-            behavior:"smooth"
-        });
-
-    }
-
-    return(
-
-        visible &&
-
-        <button className="scrollTop" onClick={top}>
-            ↑
-        </button>
-
+  return (
+    visible && (
+      <button className="scroll-top" onClick={scrollToTop}>
+        <FaArrowUp />
+      </button>
     )
-
+  );
 }
 
 export default ScrollTop;

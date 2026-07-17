@@ -1,95 +1,130 @@
 import "./Projects.css";
+import {
+  FaGithub,
+  FaExternalLinkAlt,
+  FaShieldAlt,
+  FaLock,
+  FaGlobe,
+} from "react-icons/fa";
 
-const projects = [
-  {
-    title: "Cybersecurity Portfolio",
-    description:
-      "A modern React portfolio showcasing my cybersecurity skills, certifications, projects and professional experience.",
-
-    tech: ["React", "CSS", "Vite"],
-
-    github: "https://github.com/Abdulrahman009",
-
-    demo: "#",
-  },
-
-  {
-    title: "Network Security Lab",
-
-    description:
-      "Built a secure virtual lab for penetration testing, network monitoring and vulnerability assessment.",
-
-    tech: ["Cisco", "Wireshark", "Kali Linux"],
-
-    github: "https://github.com/Abdulrahman009",
-
-    demo: "#",
-  },
-
-  {
-    title: "Password Strength Checker",
-
-    description:
-      "Developed a password validation tool that evaluates password complexity using security best practices.",
-
-    tech: ["JavaScript", "HTML", "CSS"],
-
-    github: "https://github.com/Abdulrahman009",
-
-    demo: "#",
-  },
-];
+import portfolioImg from "../../assets/images/portfolio.jpg";
+import passwordImg from "../../assets/images/password-checker.jpg";
+import securityImg from "../../assets/images/security-dashboard.jpg";
 
 function Projects() {
+  const projects = [
+    {
+      title: "Personal Portfolio",
+      image: portfolioImg,
+      icon: <FaGlobe />,
+      description:
+        "A modern cybersecurity portfolio built with React and Vite featuring responsive design, animations, and a professional UI.",
+
+      technologies: ["React", "Vite", "CSS", "JavaScript"],
+
+      github: "https://github.com/Abdulrahman009",
+
+      demo: "#",
+    },
+
+    {
+      title: "Password Strength Checker",
+      image: passwordImg,
+      icon: <FaLock />,
+      description:
+        "A password strength checker that evaluates password security and provides recommendations for creating stronger passwords.",
+
+      technologies: ["React", "JavaScript", "CSS"],
+
+      github: "https://github.com/Abdulrahman009",
+
+      demo: "#",
+    },
+
+    {
+      title: "Cybersecurity Dashboard",
+      image: securityImg,
+      icon: <FaShieldAlt />,
+      description:
+        "A concept dashboard for monitoring cybersecurity metrics, threats, and system activity using modern frontend technologies.",
+
+      technologies: ["React", "CSS", "Charts"],
+
+      github: "https://github.com/Abdulrahman009",
+
+      demo: "#",
+    },
+  ];
+
   return (
-    <section className="projects" id="projects" data-aos="fade-up">
+    <section className="projects" id="projects">
+      <div className="projects-container">
 
-      <h2>Projects</h2>
+        <h2 className="section-title">My Projects</h2>
 
-      <div className="projects-grid">
+        <p className="section-subtitle">
+          Here are some projects that demonstrate my interest in
+          cybersecurity, web development, and problem solving.
+        </p>
 
-        {projects.map((project, index) => (
+        <div className="projects-grid">
 
-          <div className="project-card" key={index}>
+          {projects.map((project, index) => (
+            <div className="project-card" key={index}>
 
-            <h3>{project.title}</h3>
+              <div className="project-image">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                />
+              </div>
 
-            <p>{project.description}</p>
+              <div className="project-content">
 
-            <div className="tech-stack">
+                <div className="project-icon">
+                  {project.icon}
+                </div>
 
-              {project.tech.map((item, i) => (
-                <span key={i}>{item}</span>
-              ))}
+                <h3>{project.title}</h3>
+
+                <p>{project.description}</p>
+
+                <div className="project-tags">
+
+                  {project.technologies.map((tech, i) => (
+                    <span key={i}>{tech}</span>
+                  ))}
+
+                </div>
+
+                <div className="project-buttons">
+
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="project-btn github-btn"
+                  >
+                    <FaGithub /> GitHub
+                  </a>
+
+                  <a
+                    href={project.demo}
+                    className="project-btn live-btn"
+                  >
+                    <FaExternalLinkAlt /> Live Demo
+                  </a>
+
+                </div>
+
+              </div>
 
             </div>
+          ))}
 
-            <div className="project-links">
-
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noreferrer"
-              >
-                GitHub
-              </a>
-
-              <a
-                href={project.demo}
-                target="_blank"
-                rel="noreferrer"
-              >
-                Live Demo
-              </a>
-
-            </div>
-
-          </div>
-
-        ))}
+        </div>
 
       </div>
-
     </section>
   );
 }
