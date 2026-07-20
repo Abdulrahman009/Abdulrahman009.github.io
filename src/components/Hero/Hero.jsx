@@ -1,16 +1,23 @@
 import "./Hero.css";
 import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
-import { FaDownload, FaEnvelope } from "react-icons/fa";
+import {
+  FaDownload,
+  FaEnvelope,
+  FaGithub,
+  FaLinkedin,
+  FaInstagram,
+  FaMapMarkerAlt,
+} from "react-icons/fa";
+
 import profileImage from "../../assets/images/profile.jpg";
 
 function Hero() {
   return (
-    <section className="hero" id="home">
+    <section className="hero" id="hero">
       <div className="hero-container">
 
         {/* Left Side */}
-
         <motion.div
           className="hero-content"
           initial={{ opacity: 0, x: -80 }}
@@ -20,7 +27,7 @@ function Hero() {
           <h3>Hello, I'm</h3>
 
           <h1>
-            Abdulrahman <span>Bello</span>
+            Bello <span>Abdulrahman</span>
           </h1>
 
           <h2>
@@ -41,13 +48,22 @@ function Hero() {
           </h2>
 
           <p>
-            Passionate about cybersecurity, secure web development,
-            penetration testing, and creating modern digital experiences
-            using React.
+            Computer Science (Cybersecurity) student passionate about ethical
+            hacking, secure web development, penetration testing, and building
+            modern web applications with React.
           </p>
 
-          <div className="hero-buttons">
+          <div className="hero-location">
+            <FaMapMarkerAlt />
+            <span>Ilorin, Kwara State, Nigeria</span>
+          </div>
 
+          <div className="hero-status">
+            <span className="status-dot"></span>
+            Available for SIWES & Internship
+          </div>
+
+          <div className="hero-buttons">
             <a
               href="/Abdulrahman_Bello_CV.pdf"
               className="primary-btn"
@@ -57,29 +73,55 @@ function Hero() {
               Download CV
             </a>
 
-            <a
-              href="#contact"
-              className="secondary-btn"
-            >
+            <a href="#contact" className="secondary-btn">
               <FaEnvelope />
               Contact Me
             </a>
+          </div>
 
+          <div className="hero-socials">
+            <a
+              href="https://github.com/Abdulrahman009"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FaGithub />
+            </a>
+
+            <a
+              href="https://www.linkedin.com/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FaLinkedin />
+            </a>
+
+            <a
+              href="https://www.instagram.com/extro82"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FaInstagram />
+            </a>
+          </div>
+
+          <div className="hero-stack">
+            <span>React</span>
+            <span>JavaScript</span>
+            <span>Cybersecurity</span>
+            <span>Networking</span>
+            <span>Linux</span>
           </div>
         </motion.div>
 
         {/* Right Side */}
-
         <motion.div
           className="hero-image"
           initial={{ opacity: 0, x: 80 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}
         >
-          <img
-            src={profileImage}
-            alt="Abdulrahman Bello"
-          />
+          <img src={profileImage} alt="Bello Abdulrahman" />
         </motion.div>
 
       </div>

@@ -1,141 +1,72 @@
 import "./Github.css";
-import { useEffect, useState } from "react";
+import { GitHubCalendar } from "react-github-calendar";
+import { motion } from "framer-motion";
 import {
   FaGithub,
-  FaUsers,
-  FaBook,
-  FaCodeBranch,
-  FaExternalLinkAlt,
-  FaStar,
+  FaCode,
+  FaLaptopCode,
+  FaShieldAlt,
 } from "react-icons/fa";
 
 function Github() {
-  const [user, setUser] = useState(null);
-  const [repos, setRepos] = useState([]);
-
-  useEffect(() => {
-    fetch("https://api.github.com/users/Abdulrahman009")
-      .then((res) => res.json())
-      .then((data) => setUser(data));
-
-    fetch(
-      "https://api.github.com/users/Abdulrahman009/repos?sort=updated&per_page=6"
-    )
-      .then((res) => res.json())
-      .then((data) => setRepos(data));
-  }, []);
-
-  if (!user) {
-    return (
-      <section className="github">
-        <h2 className="section-title">Loading GitHub...</h2>
-      </section>
-    );
-  }
-
   return (
     <section className="github" id="github">
-      <h2 className="section-title">GitHub Profile</h2>
 
-      <p className="section-subtitle">
-        Live GitHub profile and latest repositories.
-      </p>
+      <div className="section-title">
+        <h2>GitHub Activity</h2>
+        <p>
+          My coding journey, open-source contributions, and continuous
+          learning through practical development projects.
+        </p>
+      </div>
 
-      {/* Profile Card */}
-
-      <div className="github-card">
-
-        <img
-          src={user.avatar_url}
-          alt={user.login}
-          className="github-avatar"
-        />
-
-        <h2>{user.name}</h2>
-
-        <h3>@{user.login}</h3>
-
-        <p>{user.bio}</p>
+      <motion.div
+        className="github-container"
+        initial={{ opacity: 0, y: 60 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      >
 
         <div className="github-stats">
 
-          <div className="github-stat">
-            <FaBook />
-            <span>{user.public_repos}</span>
-            <p>Repositories</p>
+          <div className="github-card">
+            <FaGithub />
+            <h3>GitHub</h3>
+            <p>Open Source & Personal Projects</p>
           </div>
 
-          <div className="github-stat">
-            <FaUsers />
-            <span>{user.followers}</span>
-            <p>Followers</p>
+          <div className="github-card">
+            <FaCode />
+            <h3>React</h3>
+            <p>Frontend Development</p>
           </div>
 
-          <div className="github-stat">
-            <FaCodeBranch />
-            <span>{user.following}</span>
-            <p>Following</p>
+          <div className="github-card">
+            <FaLaptopCode />
+            <h3>JavaScript</h3>
+            <p>Modern Web Development</p>
+          </div>
+
+          <div className="github-card">
+            <FaShieldAlt />
+            <h3>Cybersecurity</h3>
+            <p>Learning Through Practice</p>
           </div>
 
         </div>
 
-        <a
-          href={user.html_url}
-          target="_blank"
-          rel="noreferrer"
-          className="github-btn"
-        >
-          <FaGithub />
-          Visit GitHub
-        </a>
+        <div className="calendar-wrapper">
+          <GitHubCalendar
+            username="Abdulrahman009"
+            colorScheme="dark"
+            blockSize={15}
+            blockMargin={5}
+            fontSize={16}
+          />
+        </div>
 
-      </div>
-
-      {/* Latest Repositories */}
-
-      <h2 className="repo-title">
-        Latest Repositories
-      </h2>
-
-      <div className="repo-grid">
-
-        {repos.map((repo) => (
-          <div
-            className="repo-card"
-            key={repo.id}
-          >
-
-            <h3>{repo.name}</h3>
-
-            <p>
-              {repo.description || "No description available."}
-            </p>
-
-            <div className="repo-info">
-
-              <span>
-                💻 {repo.language || "Unknown"}
-              </span>
-
-              <span>
-                <FaStar /> {repo.stargazers_count}
-              </span>
-
-            </div>
-
-            <a
-              href={repo.html_url}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <FaExternalLinkAlt />
-              View Repository
-            </a>
-
-          </div>
-        ))}
-
-      </div>
+      </motion.div>
 
     </section>
   );

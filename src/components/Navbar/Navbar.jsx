@@ -1,23 +1,30 @@
 import "./Navbar.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <nav className="navbar">
+    <nav className={scrolled ? "navbar scrolled" : "navbar"}>
+      <div className="logo">
+        <a href="#hero">Abdulrahman Bello</a>
+      </div>
 
-      {/* Logo */}
-      <a href="#home" className="logo">
-        AB<span>.</span>
-      </a>
-
-      {/* Navigation Links */}
       <ul className={menuOpen ? "nav-links active" : "nav-links"}>
-
         <li>
-          <a href="#home" onClick={() => setMenuOpen(false)}>
+          <a href="#hero" onClick={() => setMenuOpen(false)}>
             Home
           </a>
         </li>
@@ -41,8 +48,8 @@ function Navbar() {
         </li>
 
         <li>
-          <a href="#github" onClick={() => setMenuOpen(false)}>
-            GitHub
+          <a href="#certificates" onClick={() => setMenuOpen(false)}>
+            Certificates
           </a>
         </li>
 
@@ -51,20 +58,7 @@ function Navbar() {
             Contact
           </a>
         </li>
-
       </ul>
-
-      {/* Download CV */}
-
-      <a
-        href="/cv.pdf"
-        className="resume-btn"
-        download
-      >
-        Download CV
-      </a>
-
-      {/* Mobile Menu */}
 
       <div
         className="menu-icon"
@@ -72,7 +66,6 @@ function Navbar() {
       >
         {menuOpen ? <FaTimes /> : <FaBars />}
       </div>
-
     </nav>
   );
 }

@@ -1,26 +1,30 @@
 import "./Loader.css";
+import { motion } from "framer-motion";
 
 function Loader() {
   return (
-    <div className="loader">
+    <motion.div
+      className="loader"
+      initial={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <motion.div
+        className="loader-circle"
+        animate={{
+          rotate: 360,
+        }}
+        transition={{
+          repeat: Infinity,
+          duration: 2,
+          ease: "linear",
+        }}
+      />
 
-      <div className="loader-content">
+      <h1>AB</h1>
 
-        <div className="loader-logo">
-          AB
-        </div>
-
-        <h2>Abdulrahman Bello</h2>
-
-        <p>Loading Portfolio...</p>
-
-        <div className="loader-bar">
-          <div className="loader-progress"></div>
-        </div>
-
-      </div>
-
-    </div>
+      <p>Loading Portfolio...</p>
+    </motion.div>
   );
 }
 

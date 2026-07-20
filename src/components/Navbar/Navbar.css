@@ -3,34 +3,26 @@
   top: 0;
   left: 0;
   width: 100%;
-  padding: 18px 8%;
+  padding: 20px 8%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  background: rgba(2, 6, 23, 0.75);
-  backdrop-filter: blur(12px);
-
-  border-bottom: 1px solid rgba(56, 189, 248, 0.2);
-
   z-index: 1000;
-
-  transition: 0.4s ease;
+  transition: all 0.3s ease;
 }
 
+.navbar.scrolled {
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
 
-.logo {
-  font-size: 28px;
-  font-weight: 700;
+.logo a {
   color: #38bdf8;
   text-decoration: none;
-  letter-spacing: 1px;
+  font-size: 28px;
+  font-weight: 700;
 }
-
-.logo span {
-  color: white;
-}
-
 
 .nav-links {
   display: flex;
@@ -39,39 +31,27 @@
   list-style: none;
 }
 
-.nav-links li {
-  list-style: none;
-}
-
 .nav-links a {
+  color: white;
   text-decoration: none;
-  color: #ffffff;
   font-size: 17px;
   font-weight: 500;
-
-  transition: 0.3s ease;
+  transition: .3s;
   position: relative;
 }
-
 
 .nav-links a:hover {
   color: #38bdf8;
 }
 
-
 .nav-links a::after {
   content: "";
-
   position: absolute;
-
   left: 0;
   bottom: -6px;
-
   width: 0%;
   height: 2px;
-
   background: #38bdf8;
-
   transition: .3s;
 }
 
@@ -79,111 +59,98 @@
   width: 100%;
 }
 
-.resume-btn {
-  padding: 12px 22px;
-
-  background: #38bdf8;
-
-  color: white;
-
-  border-radius: 50px;
-
-  text-decoration: none;
-
-  font-weight: 600;
-
-  transition: .3s;
-}
-
-.resume-btn:hover {
-
-  background: #0ea5e9;
-
-  transform: translateY(-3px);
-
-  box-shadow: 0 0 20px rgba(56,189,248,.4);
-
-}
-
-
 .menu-icon {
   display: none;
-
+  color: #38bdf8;
   font-size: 30px;
-
-  color: white;
-
   cursor: pointer;
 }
 
+/* ===========================
+   Tablet
+=========================== */
 
-@media (max-width:900px){
+@media (max-width:992px){
 
 .navbar{
+padding:20px 5%;
+}
 
-padding:18px 6%;
-
+.logo a{
+font-size:24px;
 }
 
 .nav-links{
-
-position:absolute;
-
-top:80px;
-
-left:0;
-
-width:100%;
-
-background:rgba(2,6,23,.97);
-
-backdrop-filter:blur(20px);
-
-flex-direction:column;
-
-padding:30px 0;
-
-display:none;
-
 gap:25px;
+}
 
-border-top:1px solid rgba(56,189,248,.2);
+}
+
+/* ===========================
+   Mobile
+=========================== */
+
+@media (max-width:768px){
+
+.menu-icon{
+display:block;
+z-index:1001;
+}
+
+.nav-links{
+position:fixed;
+top:0;
+right:-100%;
+width:260px;
+height:100vh;
+
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+gap:35px;
+
+background:rgba(15,23,42,.98);
+backdrop-filter:blur(12px);
+
+transition:.35s;
 
 }
 
 .nav-links.active{
-
-display:flex;
-
-}
-
-.menu-icon{
-
-display:block;
-
-}
-
-.resume-btn{
-
-display:none;
-
-}
-
-}
-
-
-@media(max-width:500px){
-
-.logo{
-
-font-size:24px;
-
+right:0;
 }
 
 .nav-links a{
+font-size:20px;
+}
 
-font-size:16px;
+.logo a{
+font-size:22px;
+}
 
+}
+
+/* ===========================
+   Small Phones
+=========================== */
+
+@media (max-width:480px){
+
+.navbar{
+padding:18px;
+}
+
+.logo a{
+font-size:18px;
+}
+
+.menu-icon{
+font-size:28px;
+}
+
+.nav-links{
+width:220px;
 }
 
 }

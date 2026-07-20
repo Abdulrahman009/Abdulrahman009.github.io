@@ -2,7 +2,7 @@
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding: 100px 8%;
+  padding: 120px 8% 60px;
   color: #ffffff;
 }
 
@@ -18,16 +18,16 @@
 
 .hero-content h3 {
   color: #38bdf8;
-  font-size: 24px;
-  margin-bottom: 10px;
+  font-size: 22px;
   font-weight: 500;
+  margin-bottom: 10px;
 }
 
 .hero-content h1 {
   font-size: 64px;
+  font-weight: 700;
   line-height: 1.1;
   margin-bottom: 15px;
-  font-weight: 700;
 }
 
 .hero-content h1 span {
@@ -35,10 +35,10 @@
 }
 
 .hero-content h2 {
-  font-size: 32px;
+  font-size: 30px;
   color: #94a3b8;
   min-height: 45px;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 .hero-content p {
@@ -46,7 +46,7 @@
   color: #cbd5e1;
   font-size: 18px;
   line-height: 1.8;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 .hero-buttons {
@@ -59,24 +59,25 @@
 .secondary-btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   padding: 15px 30px;
   border-radius: 12px;
   font-size: 16px;
   font-weight: 600;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: all .3s ease;
 }
 
 .primary-btn {
   background: #38bdf8;
-  color: white;
+  color: #fff;
 }
 
 .primary-btn:hover {
   background: #0ea5e9;
   transform: translateY(-4px);
-  box-shadow: 0 12px 25px rgba(56, 189, 248, 0.4);
+  box-shadow: 0 12px 25px rgba(56,189,248,.4);
 }
 
 .secondary-btn {
@@ -86,13 +87,14 @@
 
 .secondary-btn:hover {
   background: #38bdf8;
-  color: white;
+  color: #fff;
   transform: translateY(-4px);
 }
 
 .hero-image {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .hero-image img {
@@ -101,19 +103,14 @@
   object-fit: cover;
   border-radius: 50%;
   border: 5px solid #38bdf8;
-  box-shadow: 0 0 35px rgba(56, 189, 248, 0.5);
-  transition: all 0.4s ease;
+  box-shadow: 0 0 35px rgba(56,189,248,.45);
+  animation: float 4s ease-in-out infinite;
+  transition: .4s;
 }
 
 .hero-image img:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 60px rgba(56, 189, 248, 0.8);
-}
-
-/* Floating animation */
-
-.hero-image img {
-  animation: float 4s ease-in-out infinite;
+  box-shadow: 0 0 60px rgba(56,189,248,.8);
 }
 
 @keyframes float {
@@ -123,7 +120,7 @@
   }
 
   50% {
-    transform: translateY(-12px);
+    transform: translateY(-15px);
   }
 
   100% {
@@ -132,74 +129,124 @@
 
 }
 
-/* Responsive */
+/* ==========================
+   Tablet
+========================== */
 
-@media (max-width: 1024px) {
+@media (max-width:1024px){
 
-  .hero-container {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
+.hero-container{
+grid-template-columns:1fr;
+text-align:center;
+gap:50px;
+}
 
-  .hero-content p {
-    margin: 0 auto 35px;
-  }
+.hero-content p{
+margin:0 auto 30px;
+}
 
-  .hero-buttons {
-    justify-content: center;
-  }
+.hero-buttons{
+justify-content:center;
+}
 
-  .hero-image {
-    order: -1;
-    margin-bottom: 40px;
-  }
+.hero-image{
+order:-1;
+}
 
 }
 
-@media (max-width: 768px) {
+/* ==========================
+   Mobile
+========================== */
 
-  .hero {
-    padding: 80px 20px;
-  }
+@media (max-width:768px){
 
-  .hero-content h1 {
-    font-size: 46px;
-  }
+.hero{
+padding:120px 20px 60px;
+}
 
-  .hero-content h2 {
-    font-size: 24px;
-  }
+.hero-container{
+display:flex;
+flex-direction:column-reverse;
+align-items:center;
+text-align:center;
+gap:35px;
+}
 
-  .hero-content p {
-    font-size: 16px;
-  }
+.hero-content h3{
+font-size:18px;
+}
 
-  .hero-image img {
-    width: 260px;
-    height: 260px;
-  }
+.hero-content h1{
+font-size:40px;
+}
 
-  .primary-btn,
-  .secondary-btn {
-    width: 100%;
-    justify-content: center;
-  }
+.hero-content h2{
+font-size:22px;
+min-height:35px;
+}
+
+.hero-content p{
+font-size:16px;
+line-height:1.7;
+max-width:100%;
+}
+
+.hero-buttons{
+width:100%;
+justify-content:center;
+gap:15px;
+}
+
+.primary-btn,
+.secondary-btn{
+width:100%;
+max-width:320px;
+}
+
+.hero-image{
+order:-1;
+margin-bottom:20px;
+}
+
+.hero-image img{
+width:240px;
+height:240px;
+}
 
 }
 
-@media (max-width: 480px) {
+/* ==========================
+   Small Phones
+========================== */
 
-  .hero-content h1 {
-    font-size: 38px;
-  }
+@media (max-width:480px){
 
-  .hero-content h2 {
-    font-size: 20px;
-  }
+.hero{
+padding:110px 18px 50px;
+}
 
-  .hero-image img {
-    width: 220px;
-    height: 220px;
-  }
+.hero-content h1{
+font-size:32px;
+}
+
+.hero-content h2{
+font-size:19px;
+}
+
+.hero-content p{
+font-size:15px;
+}
+
+.hero-image img{
+width:190px;
+height:190px;
+}
+
+.primary-btn,
+.secondary-btn{
+font-size:15px;
+padding:14px 20px;
+}
 
 }

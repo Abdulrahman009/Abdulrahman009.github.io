@@ -1,109 +1,68 @@
 import "./Skills.css";
+import { motion } from "framer-motion";
 import {
-  FaShieldAlt,
-  FaCode,
-  FaReact,
-  FaNetworkWired,
   FaHtml5,
   FaCss3Alt,
-  FaJsSquare,
-  FaGitAlt,
+  FaJs,
+  FaReact,
+  FaGithub,
+  FaShieldAlt,
+  FaLinux,
+  FaNetworkWired,
 } from "react-icons/fa";
 
-function Skills() {
-  const skills = [
-    {
-      icon: <FaShieldAlt />,
-      title: "Cybersecurity",
-      level: "80%",
-      width: "80%",
-    },
-    {
-      icon: <FaReact />,
-      title: "React.js",
-      level: "75%",
-      width: "75%",
-    },
-    {
-      icon: <FaJsSquare />,
-      title: "JavaScript",
-      level: "80%",
-      width: "80%",
-    },
-    {
-      icon: <FaHtml5 />,
-      title: "HTML5",
-      level: "95%",
-      width: "95%",
-    },
-    {
-      icon: <FaCss3Alt />,
-      title: "CSS3",
-      level: "90%",
-      width: "90%",
-    },
-    {
-      icon: <FaCode />,
-      title: "Python",
-      level: "65%",
-      width: "65%",
-    },
-    {
-      icon: <FaNetworkWired />,
-      title: "Networking",
-      level: "75%",
-      width: "75%",
-    },
-    {
-      icon: <FaGitAlt />,
-      title: "Git & GitHub",
-      level: "85%",
-      width: "85%",
-    },
-  ];
+const skills = [
+  { icon: <FaHtml5 />, name: "HTML5", level: 95 },
+  { icon: <FaCss3Alt />, name: "CSS3", level: 90 },
+  { icon: <FaJs />, name: "JavaScript", level: 85 },
+  { icon: <FaReact />, name: "React", level: 85 },
+  { icon: <FaGithub />, name: "Git & GitHub", level: 80 },
+  { icon: <FaShieldAlt />, name: "Cybersecurity", level: 80 },
+  { icon: <FaLinux />, name: "Linux", level: 75 },
+  { icon: <FaNetworkWired />, name: "Networking", level: 75 },
+];
 
+function Skills() {
   return (
     <section className="skills" id="skills">
-      <div className="skills-container">
-
-        <h2 className="section-title">My Skills</h2>
-
-        <p className="section-subtitle">
-          Here are some of the technologies and cybersecurity skills I have
-          developed through university studies, personal projects, and
-          continuous learning.
+      <div className="section-title">
+        <h2>Skills</h2>
+        <p>
+          Technologies and cybersecurity skills I continue to build through
+          projects, coursework, and hands-on practice.
         </p>
+      </div>
 
-        <div className="skills-grid">
+      <div className="skills-grid">
+        {skills.map((skill, index) => (
+          <motion.div
+            className="skill-card"
+            key={index}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            viewport={{ once: true }}
+          >
+            <div className="skill-icon">{skill.icon}</div>
 
-          {skills.map((skill, index) => (
-            <div className="skill-card" key={index}>
-
+            <div className="skill-info">
               <div className="skill-header">
-
-                <div className="skill-icon">
-                  {skill.icon}
-                </div>
-
-                <div className="skill-info">
-                  <h3>{skill.title}</h3>
-                  <span>{skill.level}</span>
-                </div>
-
+                <span>{skill.name}</span>
+                <span>{skill.level}%</span>
               </div>
 
-              <div className="progress-bar">
-                <div
-                  className="progress"
-                  style={{ width: skill.width }}
-                ></div>
+              <div className="progress">
+                <motion.div
+                  className="progress-bar"
+                  initial={{ width: 0 }}
+                  whileInView={{ width: `${skill.level}%` }}
+                  transition={{ duration: 1.2 }}
+                  viewport={{ once: true }}
+                />
               </div>
-
             </div>
-          ))}
-
-        </div>
-
+          </motion.div>
+        ))}
       </div>
     </section>
   );
