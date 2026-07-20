@@ -104,7 +104,7 @@ function Contact() {
             </a>
 
             <a
-              href="https://linkedin.com/"
+              href="www.linkedin.com/in/abdulrahman-bello-9395aa285/"
               target="_blank"
               rel="noreferrer"
             >
