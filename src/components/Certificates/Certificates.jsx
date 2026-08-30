@@ -8,35 +8,35 @@ import {
 
 const certificates = [
   {
-    title: "Cisco Networking Academy",
-    issuer: "Cisco",
+    title: "Introduction to Cybersecurity",
+    issuer: "NITDA IT Training Centre",
+    platform: "Cisco Networking Academy",
     status: "Completed",
-    link: "#",
+    date: "19 October 2023",
+    link: "/certificates/introduction to cybersecurity.pdf",
   },
+
   {
     title: "Google Cybersecurity Professional Certificate",
     issuer: "Coursera",
     status: "In Progress",
     link: "#",
   },
-  {
-    title: "Introduction to Cybersecurity",
-    issuer: "Cisco Networking Academy",
-    status: "Completed",
-    link: "#",
-  },
+
   {
     title: "TryHackMe Learning Path",
     issuer: "TryHackMe",
     status: "In Progress",
     link: "https://tryhackme.com/",
   },
+
   {
     title: "React Development",
     issuer: "Self Learning",
     status: "Completed",
     link: "#",
   },
+
   {
     title: "Future Certifications",
     issuer: "CompTIA • EC-Council • Microsoft",
@@ -48,6 +48,7 @@ const certificates = [
 function Certificates() {
   return (
     <section className="certificates" id="certificates">
+
       <div className="section-title">
         <h2>Certifications</h2>
 
@@ -58,18 +59,32 @@ function Certificates() {
       </div>
 
       <div className="certificates-grid">
+
         {certificates.map((cert, index) => (
           <motion.div
             key={index}
             className="certificate-card"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
+
+            initial={{
+              opacity: 0,
+              y: 40,
+            }}
+
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+
             transition={{
               duration: 0.5,
               delay: index * 0.1,
             }}
-            viewport={{ once: true }}
+
+            viewport={{
+              once: true,
+            }}
           >
+
             <div className="certificate-icon">
               <FaCertificate />
             </div>
@@ -78,21 +93,46 @@ function Certificates() {
 
             <p>{cert.issuer}</p>
 
-            <span className="status">{cert.status}</span>
+            {cert.platform && (
+              <p className="certificate-platform">
+                {cert.platform}
+              </p>
+            )}
 
-            <a
-              href={cert.link}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <FaExternalLinkAlt />
-              View
-            </a>
+            {cert.date && (
+              <p className="certificate-date">
+                {cert.date}
+              </p>
+            )}
+
+            <span className="status">
+              {cert.status}
+            </span>
+
+            {cert.link !== "#" ? (
+              <a
+                href={cert.link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaExternalLinkAlt />
+                View Certificate
+              </a>
+            ) : (
+              <span className="certificate-unavailable">
+                {cert.status === "Coming Soon"
+                  ? "Coming Soon"
+                  : "Certificate Link"}
+              </span>
+            )}
+
           </motion.div>
         ))}
+
       </div>
 
       <div className="learning-box">
+
         <FaGraduationCap />
 
         <div>
@@ -103,7 +143,9 @@ function Certificates() {
             Security • Git & GitHub • Secure Software Development
           </p>
         </div>
+
       </div>
+
     </section>
   );
 }
